@@ -1,8 +1,8 @@
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import { Box, Button, Grid, TextField } from '@mui/material';
 import axios from 'axios';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import IColaborador from '../../types/IColaborador';
 
 const data = {
@@ -14,6 +14,18 @@ interface Props {
 }
 
 export default function FormularioCadastroColaborador({ token }: Props) {
+  const params = useParams();
+  if (params.id) {
+    useEffect(() => {
+      axios.get(`http://127.0.0.1:8000/reconhecimentos/colaborador/${params.id}`)
+        .then(resposta => {
+          setColaborador(resposta.data);
+        })
+        .catch(erro => {
+          console.log(erro);
+        });
+    }, []);
+  }
 
   const [colaborador, setColaborador] = useState<IColaborador>({
     id: 0,
