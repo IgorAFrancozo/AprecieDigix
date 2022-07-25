@@ -14,9 +14,9 @@ export default function DataGridColaborador() {
 
   const columns: GridColumns = [
     { field: 'id', headerName: 'ID', width: 50 },
-    { field: 'nome', headerName: 'NOME', width: 300 },
+    { field: 'nome', headerName: 'NOME', width: 700 },
     {
-      field: 'opcoes', headerName: 'NOME', width: 50, editable: false, sortable: false, filterable: false, hideable: false, type: 'actions',
+      field: 'opcoes', headerName: 'EDITAR', width: 70, editable: false, sortable: false, filterable: false, hideable: false, type: 'actions',
       getActions: ({ id }) => {
         return [
           <GridActionsCellItem
